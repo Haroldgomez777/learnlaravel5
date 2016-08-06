@@ -15,6 +15,10 @@ Route::get('/', function() {
 	return view('welcome');	
 });
 
+Route::get('admin/index', 'AdminController@index');
+
+Route::get('manager/index', 'ManagerController@index');
+
 Route::get('roomtypes','RoomTypeController@index');
 Route::get('roomtypes/create','RoomTypeController@create');
 Route::post('roomtypes/create','RoomTypeController@store');
