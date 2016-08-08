@@ -19,6 +19,6 @@
 	</div>
 </div>
 
-
+<a href="/">Back</a>
 	@include('errors.list')
 @stop

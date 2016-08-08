@@ -1,1 +1,1 @@
-home.blade.php
+<h1>Manager Home</h1>

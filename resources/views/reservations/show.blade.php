@@ -33,6 +33,6 @@
 			  </table>
 			</div>
 	</div>
-
+<a href="/">Back</a>
 @stop
 

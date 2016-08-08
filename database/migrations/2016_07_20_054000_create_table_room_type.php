@@ -14,7 +14,7 @@ class CreateTableRoomType extends Migration
     {
         Schema::create('room_types', function ($table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name',100);
             $table->string('short_name',10);
             $table->float('base_price');
             $table->integer('base_availability');

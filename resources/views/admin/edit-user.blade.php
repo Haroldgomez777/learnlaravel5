@@ -138,4 +138,5 @@
 	@include('scripts.delete-modal-script')
 	@include('scripts.save-modal-script')
 
+
 @endsection

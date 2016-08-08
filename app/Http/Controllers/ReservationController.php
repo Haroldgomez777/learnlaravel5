@@ -21,7 +21,7 @@ class ReservationController extends Controller
 		}
 		public function create()
 		{
-			$roomtype = RoomType::lists('name' , 'id');
+			$roomtype = RoomType::lists('name','id');
 			
 			return view('reservations.create' , compact('roomtype'));	
 		}
@@ -34,22 +34,22 @@ class ReservationController extends Controller
 		        $start_dt =$request['start_dt'];
 		        $end_dt= $request['end_dt'];
 
-		        $name = $request['customer'];
-		        $customer = new Customer;
-		        $customer->first_name=$name;
-		        $customer->last_name=$request['lastname'];
-		        $customer->email=$request['email'];
-		        $customer->save();
+		        
+		        $customer = new Customer;					//creating a Customer  object 
+		        $customer->first_name=$request['customer'];			
+		        $customer->last_name=$request['lastname'];			//
+		        $customer->email=$request['email'];				//
+		        $customer->save();						//saving  don' look at code
 
-		        $reservation  = new Reservation;
-		        $reservation->room=$room->name;
-		        $reservation->total_price=$room->base_price;
-        		$reservation->occupancy=$request['occupancy'];
-		        $reservation->customer_id=$customer->id;
-		        $reservation->checkin=$start_dt;
-		        $reservation->checkout=$end_dt;
-
-		        $reservation->save();
+		        $reservation  = new Reservation;				//creating Reservation
+		        $reservation->room = $room->name;				// $room = RoomType::find($room_info);
+		        $reservation->total_price = $room->base_price;		// base_price  in Roomtype
+		        $reservation->occupancy = $request['occupancy'];		// No. of people
+		        $reservation->customer_id = $customer->id;			// the id of customer
+		        $reservation->checkin = $start_dt;				// starting date of stay
+		        $reservation->checkout = $end_dt;				// ending date checkout
+ 
+		        $reservation->save();						// saving  saving  don' look at code
 
 
 		       /**
@@ -58,7 +58,7 @@ class ReservationController extends Controller
 		        while (strtotime($date) < strtotime($end_dt)) {
 
 		            $room_calendar = RoomCalendar::where('day','=',$date)
-		                ->where('room_type_id','=',$room['id'])->first();
+		                ->where('room_type_id','=',$room['id'])->first();			// $room = RoomType::find($room_info); 
 
 		            $night = new ReservationNight;
 		            $night->day=$date;
@@ -75,7 +75,7 @@ class ReservationController extends Controller
 
 		            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
 
-
+					
 
 		        }
 

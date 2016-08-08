@@ -22,8 +22,8 @@ class AdminController extends Controller
     	return view('admin.home', compact('users'));
     }
 
-    public function create()
+    public function makemanager()
     {
-    	
+           // $user = $request;
     }
 }

@@ -33,9 +33,8 @@
 			</div>
 	</div>
 	</body>
-</html>
-	
-	
+
+<a href="/">Back</a>	
 	</div>
 
 @stop
