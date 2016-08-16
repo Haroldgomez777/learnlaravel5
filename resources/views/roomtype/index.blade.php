@@ -33,8 +33,13 @@
 			</div>
 	</div>
 	</body>
-
-<a href="/">Back</a>	
+</html>
+	@foreach ($roomcal as $cal)
+	{{$cal->id}}
+	@endforeach
+	
 	</div>
+	<a href="/">home</a>
+
 
 @stop

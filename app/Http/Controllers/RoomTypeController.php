@@ -8,14 +8,16 @@ use App\Http\Requests\CreateRoomTypeRequest;
 
 use App\Http\Controllers\Controller;
 use App\RoomType;
+use App\RoomCalendar;
 
 class RoomTypeController extends Controller
 {
     public function index()
     {
         $room_type = RoomType::all();
+        $roomcal = RoomCalendar::all();
        
-        return view('roomtype.index', compact('room_type'));
+        return view('roomtype.index', compact('room_type' , 'roomcal'));
     }
 
     public function store(CreateRoomTypeRequest $request)

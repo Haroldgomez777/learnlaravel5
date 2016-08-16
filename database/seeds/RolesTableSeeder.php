@@ -22,5 +22,18 @@ class RolesTableSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'manager',
         ]);
+
+        DB::table('tags')->insert([
+            'name' => 'food',
+            ]);
+        DB::table('tags')->insert([
+            'name' => 'personal',
+            ]);
+        DB::table('tags')->insert([
+            'name' => 'travel',
+            ]);
+        DB::table('tags')->insert([
+            'name' => 'official',
+            ]);
     }
 }

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
-use App\Reservation;
-use App\RoomCalendar;
 use App\Customer;
+use App\Http\Requests;
+use App\Http\Requests\CreateReservationRequest;
+use App\Reservation;
 use App\ReservationNight;
+use App\RoomCalendar;
 use App\RoomType;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
@@ -21,12 +20,16 @@ class ReservationController extends Controller
 		}
 		public function create()
 		{
-			$roomtype = RoomType::lists('name','id');
+			$roomtype = \DB::table('room_types')
+					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
+					->select('room_types.*')
+					->where('room_calendars.availability','>',0)
+					->lists('name','id');
 			
 			return view('reservations.create' , compact('roomtype'));	
 		}
 
-		public function store(Request $request)
+		public function store(CreateReservationRequest $request)
 		{
 				$room_info  = $request['room_info'];
 				$room = RoomType::find($room_info);
@@ -34,59 +37,75 @@ class ReservationController extends Controller
 		        $start_dt =$request['start_dt'];
 		        $end_dt= $request['end_dt'];
 
+		        $checkifexistsfirst = RoomCalendar::where('room_type_id','=',$room->id)->whereBetween('day',[$start_dt,$end_dt])->first();
+
+		        $e = RoomCalendar::where('room_type_id','=',$room->id)->where('day','=',$end_dt)->firstOrFail();
 		        
-		        $customer = new Customer;					//creating a Customer  object 
-		        $customer->first_name=$request['customer'];			
-		        $customer->last_name=$request['lastname'];			//
-		        $customer->email=$request['email'];				//
-		        $customer->save();						//saving  don' look at code
-
-		        $reservation  = new Reservation;				//creating Reservation
-		        $reservation->room = $room->name;				// $room = RoomType::find($room_info);
-		        $reservation->total_price = $room->base_price;		// base_price  in Roomtype
-		        $reservation->occupancy = $request['occupancy'];		// No. of people
-		        $reservation->customer_id = $customer->id;			// the id of customer
-		        $reservation->checkin = $start_dt;				// starting date of stay
-		        $reservation->checkout = $end_dt;				// ending date checkout
- 
-		        $reservation->save();						// saving  saving  don' look at code
 
 
-		       /**
-		        $date=$start_dt;
+		       
+		         if($checkifexistsfirst==null||$e==null)
+		         {
+		         	 return dd('error11');
+		         }
+		         else{
+		        $count = RoomCalendar::where('day','>=',$start_dt)
+		                	->where('day','<=',$end_dt)
+			            ->where('room_type_id','=',$room->id)
+			            ->where('availability','<=',0)->count();
 
-		        while (strtotime($date) < strtotime($end_dt)) {
+		        if($count==0)
+		        {
+			        $customer = new Customer;
+			        $customer->first_name=$request['customer'];
+			        $customer->last_name=$request['lastname'];
+			        $customer->email=$request['email'];
+			        $customer->save();
 
-		            $room_calendar = RoomCalendar::where('day','=',$date)
-		                ->where('room_type_id','=',$room['id'])->first();			// $room = RoomType::find($room_info); 
+			        $reservation  = new Reservation;
+			        $reservation->room=$room->name;
+	        		        $reservation->occupancy=$request['occupancy'];
+	        		        $reservation->total_price=0;
+			        $reservation->customer_id=$customer->id;
+			        $reservation->checkin=$start_dt;
+			        $reservation->checkout=$end_dt;
 
-		            $night = new ReservationNight;
-		            $night->day=$date;
+			        $reservation->save();
 
-		            $night->rate=$room_calendar->rate;
-		            $night->room_type_id=$room_info['id'];
-		            $night->reservation_id=$reservation->id;
+		        
+		       
+			        	$date=$start_dt;
 
-		            $room_calendar->availability--;
-		            $room_calendar->reservations++;
+			        	while ($date <= $end_dt) {
 
-		            $room_calendar->save();
-		            $night->save();
+			            $room_calendar = RoomCalendar::where('day','=',$date)
+			                ->where('room_type_id','=',$room['id'])->first();
 
-		            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+			            $night = new ReservationNight;
+			            $night->day=$date;
 
-					
+			            $night->rate=$room_calendar->rate;
+			            $night->room_type_id=$room_info;
+			            $night->reservation_id=$reservation->id;
+			            $room_calendar->availability--;
+			            $room_calendar->reservations++;
+			            $reservation->total_price=$reservation->total_price+$room->base_price;
+
+			            $room_calendar->save();
+			            $night->save();
+			            $reservation->save();
+			            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+
+		        		}
 
 		        }
-
-		        $nights = $reservation->nights;
-		        $customer = $reservation->customer;
-
-				**/
+		        else
+		        {
+		        	return dd('error');
+		        }
 		        
-		        
-
-		        return redirect('reserve');
+		        return dd($customer);
+		    }
 		}
 
 		public function show()
@@ -94,4 +113,20 @@ class ReservationController extends Controller
 			$reserved = Reservation::all();
 			return view('reservations.show', compact('reserved'));
 		}
+
+		public function lists()
+		{
+			$roomtypes = \DB::table('room_types')
+					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
+					->select('room_types.*')
+					->where('room_calendars.availability','>',0)
+					->lists('name','id');
+
+			return view('reservations.list', compact('roomtypes'));
+		}
+
+
+		 
+
+	      
 }

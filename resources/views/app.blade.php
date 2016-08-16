@@ -21,6 +21,9 @@
 </head>
 <body>
   <div class="container">
+      @if(Session::has('flash_error'))
+        <div class="alert alert-success">{{ Session::get('flash_error')}}</div>
+      @endif
 
       @yield('content')
 

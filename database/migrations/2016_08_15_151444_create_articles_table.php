@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
+            
         });
     }
 
@@ -37,3 +38,4 @@ class CreateArticlesTable extends Migration
         Schema::drop('articles');
     }
 }
+

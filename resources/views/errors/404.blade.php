@@ -40,7 +40,7 @@
 	        <div class="content" style="margin: 16% auto 0px; ">
 	            <div class="wrap">
 	                <p class="title">Error 404.</p>
-	                <p class="text">Sorry, the page or image you are looking for cannot be found.</p>
+	                <p class="text">Sorry, the page or image you are looking for cannot be found or there was an error in your input</p>
 	            </div>
 	            <div class="wrap">
 	                <div class="left size-6">

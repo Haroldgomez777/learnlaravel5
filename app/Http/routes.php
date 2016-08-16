@@ -18,6 +18,9 @@ Route::get('/', function() {
 Route::get('admin/index', 'AdminController@index');
 
 Route::get('manager/index', 'ManagerController@index');
+Route::get('manager/create', 'ManagerController@create');
+Route::post('manager/create', 'ManagerController@store');
+
 
 Route::get('roomtypes','RoomTypeController@index');
 Route::get('roomtypes/create','RoomTypeController@create');
@@ -25,7 +28,7 @@ Route::post('roomtypes/create','RoomTypeController@store');
 
 Route::get('roomcal','RoomCalenderController@index');
 Route::post('roomcal/set','RoomCalenderController@create');
-
+Route::get('roomcal/show','RoomCalenderController@show');
 
 Route::get('reserve','ReservationController@create');
 Route::post('reserve/create','ReservationController@store');
@@ -49,3 +52,6 @@ Route::get('/home', 'HomeController@index');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::get('/hotel', 'HotelController@index');
