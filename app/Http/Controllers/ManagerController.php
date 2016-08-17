@@ -39,7 +39,7 @@ class ManagerController extends Controller
                 $ext = $file->getClientOriginalExtension();
                 $fileName = rand(10000, 50000) . '.' .$ext;
                 $image = Image::make($request->file('img'));
-                $image->resize(120, 120);
+                //$image->resize(120, 120);
                 $new->file = '/uploads/' . $fileName;
                 $image->save(base_path().'/public/uploads/'. $fileName);
                 //$path = public_path('uploads/' . $fileName);

@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">
+				<div class="panel-heading" id ="pac">
 				
                 <h1>{{ $article->title }}</h1></div>
 				<div class="panel-body">
@@ -19,7 +19,7 @@
 								<ul>
 									@foreach ($article->tags as $tag)
 									
-										<li> {{ $tag->name }} </li>
+									<li><a href="{{url('/tags',$tag->name)}}">{{ $tag->name }} </a></li>
 
 									@endforeach
 								</ul>

@@ -27,10 +27,12 @@ class ArticlesController extends Controller
    public function index()
    {
 
-   		$articles = Article::latest('published_at')->published()->get();
+   	$articles = Article::latest('published_at')->published()->get();
          $latest = Article::latest()->first();
 
-   		return view('articles.index', compact('articles', 'latest'));
+         $tags = Tag::all();
+
+   		return view('articles.index', compact('articles', 'latest', 'tags'));
    }
 
    public function show(Article $article)

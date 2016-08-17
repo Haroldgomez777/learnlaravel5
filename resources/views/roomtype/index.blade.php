@@ -1,8 +1,8 @@
-@extends('app')
+@extends('layouts.app')
 @section('content')
 
 <div class="panel-heading"><h1>RoomTypes</h1></div>
-<hr/>
+
 <div class="panel-body"></div>	
 	<body>
 	<div class="jumbotron">
@@ -39,7 +39,6 @@
 	@endforeach
 	
 	</div>
-	<a href="/">home</a>
-
+	
 
 @stop

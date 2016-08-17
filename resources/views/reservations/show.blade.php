@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 @section('content')
 
 <div class="panel-heading"><h1>Reservations</h1></div>

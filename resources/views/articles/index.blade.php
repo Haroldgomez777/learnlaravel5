@@ -7,6 +7,14 @@
 				<div class="panel-heading">
 					<h2>Reviews</h2>
 				</div>
+				<div>
+				<h4>Tags:</h4>
+				@foreach ($tags as $tag)
+									
+				<a href="{{url('/tags',$tag->name)}}" class="btn btn-primary" role="button">{{ $tag->name }} </a>
+
+				@endforeach
+				</div>
 		@foreach ($articles as $article)
 		
 		<article>

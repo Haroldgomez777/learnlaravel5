@@ -20,14 +20,27 @@
             font-family: 'Lato';
         }
 
+        #dark{
+
+            background-color:  #a8b6b7;
+        }
         .fa-btn {
             margin-right: 6px;
+        }
+        #app-layout{
+                background-color:  #a7c7c7;
+        }
+       .panel-body{
+            background-color:  #a8b6b7;
+        }
+        #pac{
+            background-color:  #a8b6b7;
         }
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+    <nav class="navbar navbar-default navbar-static-top" id="dark">
+        <div class="container" >
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
