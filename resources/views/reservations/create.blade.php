@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
             		<div class="panel panel-default">
-								<div class="panel-heading" id ="pac"><h1>Book your Rooms here</h1></div>
+								<div class="panel-heading" id ="pac"><h3>Book your Rooms here</h3></div>
 
 						<div class="panel-body">
 						{!! Form::open(array('url' => 'reserve/create')) !!}

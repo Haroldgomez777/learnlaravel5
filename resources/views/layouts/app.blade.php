@@ -9,11 +9,11 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> 
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="/css/all.css" rel="stylesheet">
+    <link href="/css/all.css" rel="stylesheet"> 
 
     <style>
         body {
@@ -22,24 +22,24 @@
 
         #dark{
 
-            background-color:  #a8b6b7;
+            background-color:  #ddeeeb
         }
         .fa-btn {
             margin-right: 6px;
         }
         #app-layout{
-                background-color:  #a7c7c7;
+                background-color:  #ddeeeb;
         }
        .panel-body{
-            background-color:  #a8b6b7;
+            background-color:  #ddeeeb;
         }
         #pac{
-            background-color:  #a8b6b7;
+            background-color:  #ddeeeb;
         }
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top" id="dark">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" >
             <div class="navbar-header">
 
@@ -81,15 +81,30 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles/create') }}">Customer Actions</a></li>
+                    <li><a href="{{ url('/articles/create') }}">Write Review</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/reserve') }}">Book Room</a></li>
                 </ul>
                 @elseif(Auth::user()->role->id=='3')
+
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/manager/index') }}">Profile</a></li>
+                </ul>
+                 <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/manager/create') }}">Hotel</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles/create') }}">Manager Actions</a></li>
+                    <li><a href="{{ url('/roomtypes/create') }}">Add Roomtype</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/roomcal') }}">Edit Rooms</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/roomcal/show') }}">Avilable Rooms</a></li>
+                </ul>
+                
+                
                 @endif
                 
 
@@ -115,11 +130,13 @@
         </div>
     </nav>
 
+<div class="jumbotron" id="dark">
     @yield('content')
-
+</div>
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
         <script src="/js/all.js"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(300);

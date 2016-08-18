@@ -1,32 +1,50 @@
-		<div class="form-group">
-			{!! Form::label('room_info', 'RoomType:') !!}
+		<div class="form-group row">
+			{!! Form::label('room_info', 'RoomType:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		 <div class="col-xs-10">
 			{!! Form::select('room_info',$roomtype,null, ['class' => 'form-control']) !!}
 		</div>
+		</div>
 
-		<div class="form-group">
-			{!! Form::label('customer', 'your first Name:') !!}
+		<div class="form-group row">
+			{!! Form::label('customer', 'your first Name:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
 			{!! Form::text('customer', null,['class' => 'form-control']) !!}
 		</div>
-		<div class="form-group">
-			{!! Form::label('lastname', 'Last Name:') !!}
-			{!! Form::text('lastname', null,['class' => 'form-control']) !!}
-		</div>
-		<div class="form-group">
-			{!! Form::label('email', 'email') !!}
-			{!! Form::email('email', null,['class' => 'form-control']) !!}
 		</div>
 
-		<div class="form-group">
-			{!! Form::label('occupancy', 'No of People:') !!}
+		<div class="form-group row">
+			{!! Form::label('lastname', 'Last Name:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
+			{!! Form::text('lastname', null,['class' => 'form-control']) !!}
+		</div>
+		</div>
+
+		<div class="form-group row">
+			{!! Form::label('email', 'email',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
+			{!! Form::email('email', null,['class' => 'form-control']) !!}
+		</div>
+		</div>
+
+		<div class="form-group row">
+			{!! Form::label('occupancy', 'No of People:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
 			{!! Form::text('occupancy', null, ['class' => 'form-control']) !!}
 		</div>
-		<div class="form-group">
-			{!! Form::label('start_dt', 'Startdate:') !!}
+		</div>
+
+		<div class="form-group row">
+			{!! Form::label('start_dt', 'Startdate:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
 			{!! Form::input('date','start_dt', date('Y-m-d'), ['class' => 'form-control']) !!}
 		</div>
-		<div class="form-group">
-			{!! Form::label('end_dt', 'EndDate:') !!}
+		</div>
+		
+		<div class="form-group row">
+			{!! Form::label('end_dt', 'EndDate:',['class'=>'col-xs-2 col-form-label'] ) !!}
+		<div class="col-xs-10">
 			{!! Form::input('date','end_dt', date('Y-m-d'), ['class' => 'form-control']) !!}
+		</div>
 		</div>
 		
 

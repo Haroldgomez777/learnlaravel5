@@ -33,7 +33,7 @@
 			  </table>
 			</div>
 	</div>
-	<a href="/">home</a>
+
 
 
 @stop

@@ -3,7 +3,7 @@
 
 <div class="jumbotron">
 			<div class="container">
-			  <h2>RoomCalender</h2>           
+			  <h3>RoomCalender</h3>           
 			  <table class="table table-bordered">
 			    <thead>
 			      <tr>
