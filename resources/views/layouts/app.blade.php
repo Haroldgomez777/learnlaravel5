@@ -59,6 +59,7 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                @if (Auth::guest())
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
@@ -68,6 +69,28 @@
                  <ul class="nav navbar-nav">
                     <li><a href="{{ url('/articles/create') }}">Write Review</a></li>
                 </ul>
+                @elseif(Auth::user()->role->id=='1')
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/articles/create') }}">Admin Actions</a></li>
+                </ul>
+                @elseif(Auth::user()->role->id=='2')
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/articles/create') }}">Customer Actions</a></li>
+                </ul>
+                @elseif(Auth::user()->role->id=='3')
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/articles/create') }}">Manager Actions</a></li>
+                </ul>
+                @endif
                 
 
                 <!-- Right Side Of Navbar -->
