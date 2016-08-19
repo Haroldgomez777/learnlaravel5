@@ -39,14 +39,21 @@ class ReservationController extends Controller
 
 		        $checkifexistsfirst = RoomCalendar::where('room_type_id','=',$room->id)->whereBetween('day',[$start_dt,$end_dt])->first();
 
-		        $e = RoomCalendar::where('room_type_id','=',$room->id)->where('day','=',$end_dt)->firstOrFail();
+		        $e =RoomCalendar::where('room_type_id','=',$room->id)->where('day','=',$end_dt)->first();
+		        if(!$e)
+		        {
+		        	session()->flash('flash_message','No rooms available');
+
+		        	return redirect('reserve');
+		        }
 		        
 
 
 		       
 		         if($checkifexistsfirst==null||$e==null)
 		         {
-		         	 return dd('error11');
+		         	session()->flash('flash_message','No rooms available');
+		         	 return redirect('reserve');
 		         }
 		         else{
 		        $count = RoomCalendar::where('day','>=',$start_dt)
@@ -101,10 +108,13 @@ class ReservationController extends Controller
 		        }
 		        else
 		        {
-		        	return dd('error');
+		        	session()->flash('flash_message','No rooms available');
+		        	return redirect('reserve');
 		        }
+
+		        session()->flash('flash_message','OK your room is booked');
 		        
-		        return dd($customer);
+		        return redirect('reserve');
 		    }
 		}
 

@@ -132,7 +132,11 @@
     </nav>
 
 <div class="jumbotron" id="dark">
+    <div class="container">
+
+    @include('partials.form-status')
     @yield('content')
+    </div>
 </div>
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
@@ -141,6 +145,11 @@
         <script src="/js/all.js"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+
 
     </script>
         @yield('footer')

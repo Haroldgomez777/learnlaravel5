@@ -1,3 +1,6 @@
+@if(Session::has('flash_message'))
+        <div class="alert alert-success">{{session('flash_message')}}</div>
+@endif
 @if (session('status'))
 	<div class="alert alert-success alert-dismissable flat">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -22,7 +25,7 @@
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<h4>
 			<i class="icon fa fa-warning"></i>
-			<strong>{{ Lang::get('auth.whoops') }}</strong> {{ Lang::get('auth.someProblems') }}
+			<strong>ALERT</strong> {{ Auth::user()->name}}
 		</h4>
 		<ul>
 			@foreach ($errors->all() as $error)

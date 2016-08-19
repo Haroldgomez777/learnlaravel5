@@ -56,7 +56,7 @@ class ArticlesController extends Controller
 
 
 
-     session()->flash('flash_message', 'Your Review has been posted!');
+    session()->flash('flash_message', 'Your Review has been posted!');
       
 
       return redirect('articles');
