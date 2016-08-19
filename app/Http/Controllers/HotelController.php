@@ -11,8 +11,8 @@ class HotelController extends Controller
 {
     public function index()
     {
-    	$hotels = Hotel::all();
+    	$hotel =  Auth::user()->hotel;
 
-    	return view('hotel.profile',compact('hotels'));
+    	return view('manager.home',compact('hotel'));
     }
 }

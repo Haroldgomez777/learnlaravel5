@@ -27,7 +27,7 @@
 
 				
 					<div class="panel-body">
-						<p>{!! nl2br(e($article->body)) !!}</p>
+						<article>{!! nl2br(e($article->body)) !!}</article>
 					</div>
 		
 		</article>

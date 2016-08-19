@@ -2,7 +2,8 @@
 			{!! Form::label('name', 'Hotel Name:') !!}
 			{!! Form::text('name', null, ['class' => 'form-control']) !!}
 		</div>
-		<div class="form-group">
+		         <div class="control-group">
+          			<div class="controls">
 		    {!! Form::label('img','Choose Image:') !!}
 		    {!! Form::file('img',null,array(['class' => 'form-control'] )) !!}
 		</div>

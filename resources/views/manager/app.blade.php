@@ -13,7 +13,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="/css/all.css" rel="stylesheet"> 
+    <link href="/cdss/bootstrap.min.css" rel="stylesheet">
+    <link href="/cdss/simple-sidebar.css" rel="stylesheet">
 
     <style>
         body {
@@ -104,6 +105,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/roomcal/show') }}">Avilable Rooms</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="#menu-toggle" id="menu-toggle">Toggle Menu</a></li>
+                </ul>
                 
                 
                 @endif
@@ -131,6 +135,41 @@
         </div>
     </nav>
 
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+
 <div class="jumbotron" id="dark">
     @yield('content')
 </div>
@@ -139,9 +178,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
         <script src="/js/all.js"></script>
+        <script src="/js/jquery.js"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(300);
 
+        $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     </script>
         @yield('footer')
 </body>
