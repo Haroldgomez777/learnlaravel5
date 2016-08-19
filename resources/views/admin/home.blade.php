@@ -1,3 +1,5 @@
+@extends('admin.app')
+@section('content')
 <div class="jumbotron">
 			<div class="container">
 			      <h1>Admin</h1>
@@ -27,5 +29,6 @@
 		  </table>
 	</div>
 </div>
+@endsection
 
-{{ $users->links() }}
+
