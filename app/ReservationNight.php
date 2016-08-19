@@ -8,12 +8,12 @@ class ReservationNight extends Model
 {
     protected $fillable = ['rate', 'date', 'room_type_id'];
 
-     function Reservation()
+     public function Reservation()
     {
         return $this->hasOne('App\Reservation');
     }
 
-    function RoomType()
+    public function RoomType()
     {
         return $this->hasOne('App\RoomType');
     

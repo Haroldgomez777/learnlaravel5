@@ -25,7 +25,7 @@
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<h4>
 			<i class="icon fa fa-warning"></i>
-			<strong>ALERT</strong> {{ Auth::user()->name}}
+			<strong>ALERT</strong>
 		</h4>
 		<ul>
 			@foreach ($errors->all() as $error)

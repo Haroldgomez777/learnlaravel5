@@ -7,7 +7,7 @@ use Session;
 use Image;
 use Auth;
 use App\Http\Requests;
-use App\Hotels;
+use App\Hotel;
 
 
 class ManagerController extends Controller
@@ -24,7 +24,19 @@ class ManagerController extends Controller
     {
         $hotel =  Auth::user()->hotel;
 
+        if($hotel)
+        {
         return view('manager.home',compact('hotel'));
+        }
+        else
+        {
+            $hotel = new Hotel;
+            $hotel->name = 'Add your Hotel';
+            $hotel->file = '/uploads/11.jpg';
+            $hotel->user_id=Auth::user()->id; 
+            $hotel->save();
+            return view('manager.home',compact('hotel'));
+        }
     }
 
     public function create()

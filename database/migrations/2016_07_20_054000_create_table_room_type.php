@@ -19,6 +19,7 @@ class CreateTableRoomType extends Migration
             $table->float('base_price');
             $table->integer('base_availability');
             $table->integer('max_occupancy');
+            $table->integer('hotel_id')->unsigned();
             $table->timestamps();
         });
 

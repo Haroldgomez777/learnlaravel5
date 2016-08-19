@@ -8,7 +8,7 @@ class RoomCalendar extends Model
 {
     protected $fillable = ['room_type_id', 'rate','day'];
 
-    function RoomType(){
+    public function RoomType(){
         return $this->belongsTo('App\RoomType');
     }
 

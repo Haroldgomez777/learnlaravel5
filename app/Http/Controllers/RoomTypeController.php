@@ -9,6 +9,7 @@ use App\Http\Requests\CreateRoomTypeRequest;
 use App\Http\Controllers\Controller;
 use App\RoomType;
 use App\RoomCalendar;
+use Auth;
 
 class RoomTypeController extends Controller
 {
@@ -22,7 +23,8 @@ class RoomTypeController extends Controller
 
     public function store(CreateRoomTypeRequest $request)
     {
-        RoomType::create($request->all());
+        $hotel = Auth::user()->hotel;
+        $hotel->roomtype()->create($request->all());
 
         return redirect('roomtypes/create');
     }
