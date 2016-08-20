@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="jumbotron">
-			<div class="container">
+		<div class="container">
 			      <h2>Users</h2>
 			      </hr>     
 			  <table class="table table-bordered">
@@ -33,7 +33,7 @@
 				            {{ method_field('PATCH') }}
 
 				            <button type="submit" class=" btn btn-danger btn-xs">
-				                <span class="glyphicon glyphicon-flash"></span> Make Admin
+				                <span class="glyphicon glyphicon-flash"></span> Make Manager
 				            </button>
 				</form>
 			        
@@ -47,12 +47,13 @@
 				                <span class="glyphicon glyphicon-flash"></span> Make user
 				            </button>
 				</form>
-			@endif
+				@endif
 			      	</td>
+
 			      </tr>
 			     @endforeach
 			    </tbody>
 		  </table>
-	</div>
+</div>
 </div>
 @endsection

@@ -52,4 +52,18 @@ class AdminController extends Controller
         return redirect('admin/users');
 
     }
+
+    public function deleteHotel($id)
+    {
+        $hotel = Hotel::find($id);
+        $hotel->delete();
+
+         return redirect('admin/hotels');
+
+    }
+
+    public function deleteuser()
+    {
+        
+    }
 }

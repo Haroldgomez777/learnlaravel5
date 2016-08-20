@@ -9,9 +9,10 @@
 			      <tr>
 			        <th>ID</th>
 			        <th>Name</th>
-			        <th>Email</th>
-			        <th>password </th>
+			        <th>location</th>
+			        <th>description </th>
 			        <th>Owner</th>
+			        <th>Delete</th>
 			        	        
 			      </tr>
 			    </thead>
@@ -23,8 +24,16 @@
 			        <td>{{ $hotel->location }}</td>
 			        <td>{{ $hotel->description }}</td>
 			        <td>{{ $hotel->user->name}}</td>
-			        	 
-			        
+			        	<td> 
+				<form action="{{ url('admin/hotel/'.$hotel->id) }}" method="post">
+				            {{ csrf_field() }}
+				            {{ method_field('DELETE') }}
+
+				            <button type="submit" class=" btn btn-danger btn-xs">
+				                <span class="glyphicon glyphicon-trash"></span> DELETE
+				            </button>
+				</form>
+				</td>
 			      </tr>
 			     @endforeach
 			    </tbody>

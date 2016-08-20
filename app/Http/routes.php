@@ -20,6 +20,7 @@ Route::get('admin/users', 'AdminController@users');
 Route::get('admin/hotels', 'AdminController@hotels');
 Route::patch('admin/{id}', 'AdminController@makemanager');
 Route::patch('admin/user/{id}', 'AdminController@makeuser');
+Route::delete('admin/hotel/{id}', 'AdminController@deleteHotel');
 
 Route::get('manager/index', 'ManagerController@index');
 Route::get('manager/create', 'ManagerController@create');
