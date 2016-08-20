@@ -26,6 +26,7 @@ class ManagerController extends Controller
 
         if($hotel)
         {
+            
         return view('manager.home',compact('hotel'));
         }
         else
@@ -64,6 +65,7 @@ class ManagerController extends Controller
                 //Image::make($file->getRealPath())->resize(120, 120)->save($path);
             }
         $new->save();
+        session()->flash('flash_message','Hotel Information saved');
        
         return redirect('manager/create');
     

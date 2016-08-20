@@ -160,6 +160,7 @@
 
 
 <div class="jumbotron" id="dark">
+    @include('partials.form-status')
     @yield('content')
 </div>
     <!-- JavaScripts -->

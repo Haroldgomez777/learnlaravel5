@@ -20,6 +20,11 @@ class CreateHotelsTable extends Migration
             $table->string('location');
             $table->text('description');
             $table->timestamps();
+
+               $table->foreign('user_id')
+                     ->references('id')
+                     ->on('users')
+                     ->onDelete('cascade');
         });
     }
 

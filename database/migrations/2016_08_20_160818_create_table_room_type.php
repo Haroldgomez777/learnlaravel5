@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateTableRoomType extends Migration
 {
     /**
@@ -21,10 +19,13 @@ class CreateTableRoomType extends Migration
             $table->integer('max_occupancy');
             $table->integer('hotel_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('hotel_id')
+                     ->references('id')
+                     ->on('hotels')
+                     ->onDelete('cascade');
         });
-
     }
-
     /**
      * Reverse the migrations.
      *
@@ -35,3 +36,5 @@ class CreateTableRoomType extends Migration
         Schema::drop('room_types');
     }
 }
+
+ 

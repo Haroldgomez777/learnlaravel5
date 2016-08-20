@@ -19,6 +19,12 @@ class RoomCalenderController extends Controller
 		*
 		* @return Response
 		*/
+
+		 public function __construct()
+		{
+				$this->middleware('manag');
+		}
+
 		public function index()
 		{
 			$hotel = Auth::user()->hotel;
@@ -26,12 +32,12 @@ class RoomCalenderController extends Controller
 			{
 				$roomtype = [];
 				$roomcal = [];
-				return view('roomcalender.index',compact('roomtype','roomcal'));
+				return view('roomcalender.index',compact('roomtype'));
 			}
 			$roomtype = RoomType::where('hotel_id','=',$hotel->id)->lists('name' , 'id');
 
-			$roomcal = RoomCalendar::all();
-			return view('roomcalender.index',compact('roomtype','roomcal'));
+			//$roomcal = RoomCalendar::where('hotel_id','=',$hotel->id)->get();
+			return view('roomcalender.index',compact('roomtype'));
 		}
 		/**
 		* Show the form for creating a new resource.
@@ -42,7 +48,7 @@ class RoomCalenderController extends Controller
 		{
 			
 			$this->setPriceInRangeForRoomType($request);
-			
+			session()->flash('flash_message','Room Type created');
 			return redirect('roomcal');
 			
 		}
@@ -53,7 +59,16 @@ class RoomCalenderController extends Controller
 		*/
 		public function show()
 		{
-			$roomcal = RoomCalendar::orderBy('day' , 'asc' )->get();
+			$hotel = Auth::user()->hotel;
+			if(!$hotel)
+			{
+				//$roomtype = [];
+				$roomcal = [];
+				return view('roomcalender.index',compact('roomcal'));
+			}
+			//$roomcal = RoomCalendar::orderBy('day' , 'asc' )->get();
+			//$roomtype = RoomType::where('hotel_id','=',$hotel->id)->lists('name' , 'id');
+			$roomcal =RoomCalendar::where('hotel_id','=',$hotel->id)->get();
 			return view('roomcalender.show',compact('roomcal'));
 		}
 
@@ -66,6 +81,7 @@ public function setPriceInRangeForRoomType(Request $request)
         $price =  $base_room->base_price;
         $start_dt =  $request['start_dt'];
         $end_dt =  $request['end_dt'];
+        $hotel = Auth::user()->hotel;
         $date = date ("Y-m-d",strtotime($start_dt));
 
         
@@ -80,6 +96,7 @@ public function setPriceInRangeForRoomType(Request $request)
             }
             $room_day->reservations=0;
             $room_day->rate = $price;
+            $room_day->hotel_id = $hotel->id;
             $room_day->save();
             $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
             $i++;

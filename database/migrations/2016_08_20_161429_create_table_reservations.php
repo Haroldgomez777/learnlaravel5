@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableRoomCalendar extends Migration
+class CreateTableReservations extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,18 @@ class CreateTableRoomCalendar extends Migration
      */
     public function up()
     {
-        Schema::create('room_calendars', function ($table) {
+        Schema::create('reservations', function ($table) {
             $table->increments('id');
+            $table->string('room');
+            $table->float('total_price');
+            $table->integer('occupancy');
+            $table->integer('customer_id');
+            $table->date('checkin');
+            $table->date('checkout');
             $table->integer('room_type_id');
-            $table->integer('availability')->unsigned();
-            $table->integer('reservations');
-            $table->float('rate');
-            $table->date('day');
             $table->timestamps();
+
+            
         });
     }
 
@@ -30,7 +34,6 @@ class CreateTableRoomCalendar extends Migration
      */
     public function down()
     {
-        Schema::drop('room_calendars');
-
+        Schema::drop('reservations');
     }
 }

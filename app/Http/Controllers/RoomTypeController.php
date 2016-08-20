@@ -13,6 +13,12 @@ use Auth;
 
 class RoomTypeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('manag');
+    }
+    
     public function index()
     {
         $room_type = RoomType::all();
@@ -25,7 +31,7 @@ class RoomTypeController extends Controller
     {
         $hotel = Auth::user()->hotel;
         $hotel->roomtype()->create($request->all());
-
+        session()->flash('flash_message','Room Type created');
         return redirect('roomtypes/create');
     }
 
