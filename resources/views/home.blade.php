@@ -13,6 +13,10 @@
                             <div class ="col-md-7  col-md-offset-2">
                             <img src="{{url($hotel->file)}}" class="img-rounded" alt="No Image Found" width=100% height="300">
                             </div>
+                            <h4>Location:{{$hotel->location}}</h4>
+                            <article>
+                                    Description:{!! nl2br(e($hotel->description)) !!}
+                            </article>
                     @endforeach                      
                 </div>
             </div>
