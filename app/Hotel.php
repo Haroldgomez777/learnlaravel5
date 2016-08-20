@@ -12,5 +12,5 @@ class Hotel extends Model
   	public function roomtype()
     	{
     		return $this->hasMany('App\RoomType');
-    	}  
+    	}
 }

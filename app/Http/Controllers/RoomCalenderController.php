@@ -9,6 +9,7 @@ use App\RoomCalendar;
 use App\RoomType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Auth;
 
 
 class RoomCalenderController extends Controller
@@ -20,8 +21,8 @@ class RoomCalenderController extends Controller
 		*/
 		public function index()
 		{
-			
-			$roomtype = RoomType::lists('name' , 'id');
+			$hotel = Auth::user()->hotel;
+			$roomtype = RoomType::where('hotel_id','=',$hotel->id)->lists('name' , 'id');
 
 			$roomcal = RoomCalendar::all();
 			return view('roomcalender.index',compact('roomtype','roomcal'));

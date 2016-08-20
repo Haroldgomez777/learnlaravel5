@@ -5,10 +5,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading" id="pac">Dashboard</div>
+                <div class="panel-heading" id="pac">Available Hotels</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    @foreach($hotels as $hotel)
+                            <a href="{{ url('/reserve',$hotel->id) }}"><h2>{{$hotel->name}}</h2></a>
+                    @endforeach                      
                 </div>
             </div>
         </div>

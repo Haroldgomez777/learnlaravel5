@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('manager.app')
 @section('content')
 
 <div class="panel-heading"><h1>Reservations</h1></div>
@@ -19,14 +19,14 @@
 			      </tr>
 			    </thead>
 			    <tbody>
-			    @foreach ($reserved as $reserved)
+			    @foreach ($reserved as $reserve)
 			      <tr>
-			        <td>{{ $reserved->customer->first_name }}</td>
-			        <td>{{ $reserved->customer->email }}</td>
-			        <td>{{ $reserved->checkin }}</td>
-			        <td>{{ $reserved->checkout }}</td>
-			        <td>{{ $reserved->total_price }}</td>
-			        <td>{{ $reserved->room }}</td>
+			        <td>{{ $reserve->customer->first_name }}</td>
+			        <td>{{ $reserve->customer->email }}</td>
+			        <td>{{ $reserve->checkin }}</td>
+			        <td>{{ $reserve->checkout }}</td>
+			        <td>{{ $reserve->total_price }}</td>
+			        <td>{{ $reserve->room }}</td>
 			      </tr>
 			     @endforeach
 			    </tbody>

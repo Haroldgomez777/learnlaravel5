@@ -11,6 +11,7 @@ use App\RoomCalendar;
 use App\RoomType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Auth;
 
 class ReservationController extends Controller
 {
@@ -18,9 +19,12 @@ class ReservationController extends Controller
 		{
 			
 		}
-		public function create()
+		public function create($hotel)
 		{
+			
+			
 			$roomtype = \DB::table('room_types')
+					->where('room_types.hotel_id' ,'=' , $hotel)
 					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
 					->select('room_types.*')
 					->where('room_calendars.availability','>',0)
@@ -44,7 +48,7 @@ class ReservationController extends Controller
 		        {
 		        	session()->flash('flash_message','No rooms available');
 
-		        	return redirect('reserve');
+		        	return redirect('/home');
 		        }
 		        
 
@@ -67,6 +71,7 @@ class ReservationController extends Controller
 			        $customer->first_name=$request['customer'];
 			        $customer->last_name=$request['lastname'];
 			        $customer->email=$request['email'];
+			        $customer->room_type_id = $room->id;
 			        $customer->save();
 
 			        $reservation  = new Reservation;
@@ -74,6 +79,7 @@ class ReservationController extends Controller
 	        		        $reservation->occupancy=$request['occupancy'];
 	        		        $reservation->total_price=0;
 			        $reservation->customer_id=$customer->id;
+			        $reservation->room_type_id=$room->id;
 			        $reservation->checkin=$start_dt;
 			        $reservation->checkout=$end_dt;
 
@@ -114,19 +120,29 @@ class ReservationController extends Controller
 
 		        session()->flash('flash_message','OK your room is booked');
 		        
-		        return redirect('reserve');
+		        return redirect('/home');
 		    }
 		}
 
 		public function show()
 		{
-			$reserved = Reservation::all();
+			$hotel = Auth::user()->hotel;
+			$reserved =  Reservation::join('room_types','room_types.id','=','reservations.room_type_id')
+					->where('room_types.hotel_id' ,'=' , $hotel->id)
+					->select('reservations.*')
+					->get();
+
+					
+
+			//Reservation::where('room_types.hotel_id' ,'=' , $hotel->id)->get();
 			return view('reservations.show', compact('reserved'));
 		}
 
 		public function lists()
 		{
+			$hotel = Auth::user()->hotel;
 			$roomtypes = \DB::table('room_types')
+					->where('room_types.hotel_id' ,'=' , $hotel->id)
 					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
 					->select('room_types.*')
 					->where('room_calendars.availability','>',0)

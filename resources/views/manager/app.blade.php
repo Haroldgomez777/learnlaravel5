@@ -93,20 +93,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/manager/index') }}">Profile</a></li>
                 </ul>
-                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/manager/create') }}">Hotel</a></li>
-                </ul>
+
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/roomtypes/create') }}">Add Roomtype</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/roomcal') }}">Edit Rooms</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/roomcal/show') }}">Avilable Rooms</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li><a href="#menu-toggle" id="menu-toggle">Toggle Menu</a></li>
+                    <li><a href="#menu-toggle" id="menu-toggle">Menu</a></li>
                 </ul>
                 
                 
@@ -146,19 +135,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="{{ url('reserve/list') }}">Reservations</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="{{ url('/roomtypes/create') }}">Add Roomtype</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="{{ url('/roomcal') }}">Edit Rooms</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="{{ url('/roomcal/show') }}">Avilable Rooms</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="{{ url('/manager/create') }}">Edit Hotel Details</a>
                 </li>
                 <li>
                     <a href="#">Services</a>

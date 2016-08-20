@@ -17,9 +17,10 @@ class CreateTableReservations extends Migration
             $table->string('room');
             $table->float('total_price');
             $table->integer('occupancy');
-            $table->string('customer_id');
+            $table->integer('customer_id');
             $table->date('checkin');
             $table->date('checkout');
+            $table->integer('room_type_id');
             $table->timestamps();
         });
     }

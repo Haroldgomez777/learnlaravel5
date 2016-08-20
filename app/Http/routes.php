@@ -30,9 +30,10 @@ Route::get('roomcal','RoomCalenderController@index');
 Route::post('roomcal/set','RoomCalenderController@create');
 Route::get('roomcal/show','RoomCalenderController@show');
 
-Route::get('reserve','ReservationController@create');
-Route::post('reserve/create','ReservationController@store');
 Route::get('reserve/list','ReservationController@show');
+Route::post('reserve/create','ReservationController@store');
+Route::get('reserve/{hotel}','ReservationController@create');
+
 
 
 Route::resource('articles','ArticlesController');

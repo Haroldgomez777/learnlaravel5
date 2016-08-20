@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('manager.app')
 @section('content')
 
 <div class="panel-heading"><h1>RoomTypes</h1></div>

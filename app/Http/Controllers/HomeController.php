@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Auth;
 use Illuminate\Http\Request;
+use App\Hotel;
 
 
 class HomeController extends Controller
@@ -40,7 +41,8 @@ class HomeController extends Controller
         }
         else
         {
-            return view('home');
+            $hotels = Hotel::all();
+            return view('home',compact('hotels'));
         }
     }
 }
