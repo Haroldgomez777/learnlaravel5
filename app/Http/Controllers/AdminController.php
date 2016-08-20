@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Hotel;
 
 class AdminController extends Controller
 {
@@ -17,13 +18,38 @@ class AdminController extends Controller
 
     public function index()
     {
+
+        return view('admin.home');
+    }
+    public function users()
+    {
     	$users = User::paginate(15);
 
-    	return view('admin.home', compact('users'));
+    	return view('admin.users', compact('users'));
     }
 
-    public function makemanager()
+    public function hotels()
     {
-           // $user = $request;
+           $hotels = Hotel::paginate(10);
+           return view('admin.hotels', compact('hotels'));
+
+    }
+    public function makemanager($id)
+    {
+        $user = User::find($id);
+        $user->role_id = 3;
+        $user->save();
+
+        return redirect('admin/users');
+
+    }
+     public function makeuser($id)
+    {
+        $user = User::find($id);
+        $user->role_id = 2;
+        $user->save();
+
+        return redirect('admin/users');
+
     }
 }

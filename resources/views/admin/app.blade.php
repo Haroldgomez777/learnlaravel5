@@ -79,7 +79,7 @@
                     <li><a href="{{ url('/articles/create') }}">Admin Actions</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="#menu-toggle" id="menu-toggle">Toggle Menu</a></li>
+                    <li><a href="#menu-toggle" id="menu-toggle">Menu</a></li>
                 </ul>
                 @elseif(Auth::user()->role->id=='2')
                 <ul class="nav navbar-nav">
@@ -149,13 +149,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="{{url('/admin/index')}}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="{{url('/admin/users')}}">Users list</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="{{url('/admin/hotels')}}">Hotels List</a>
                 </li>
                 <li>
                     <a href="#">Events</a>

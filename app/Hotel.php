@@ -13,4 +13,8 @@ class Hotel extends Model
     	{
     		return $this->hasMany('App\RoomType');
     	}
+     public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
