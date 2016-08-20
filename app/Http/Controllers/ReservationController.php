@@ -127,6 +127,12 @@ class ReservationController extends Controller
 		public function show()
 		{
 			$hotel = Auth::user()->hotel;
+			if(!$hotel)
+			{
+				$roomtypes = [];
+				return view('reservations.list', compact('roomtypes'));	
+			}
+
 			$reserved =  Reservation::join('room_types','room_types.id','=','reservations.room_type_id')
 					->where('room_types.hotel_id' ,'=' , $hotel->id)
 					->select('reservations.*')
@@ -141,6 +147,12 @@ class ReservationController extends Controller
 		public function lists()
 		{
 			$hotel = Auth::user()->hotel;
+			if(!$hotel)
+			{
+				$roomtypes = [];
+				
+				return view('reservations.list', compact('roomtypes'));
+			}
 			$roomtypes = \DB::table('room_types')
 					->where('room_types.hotel_id' ,'=' , $hotel->id)
 					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')

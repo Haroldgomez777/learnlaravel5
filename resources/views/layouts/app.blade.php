@@ -65,7 +65,7 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
                  <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles') }}">Reviews</a></li>
+                    <li><a href="{{ url('/articles') }}">Articles</a></li>
                 </ul>
                  <ul class="nav navbar-nav">
                     <li><a href="{{ url('/articles/create') }}">Write Review</a></li>
@@ -82,10 +82,10 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles/create') }}">Write Review</a></li>
+                    <li><a href="{{ url('/articles/create') }}">Write An Article</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/reserve') }}">Book Room</a></li>
+                    <li><a href="{{ url('/articles') }}">Articles</a></li>
                 </ul>
                 @elseif(Auth::user()->role->id=='3')
 

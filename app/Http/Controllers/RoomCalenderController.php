@@ -22,6 +22,12 @@ class RoomCalenderController extends Controller
 		public function index()
 		{
 			$hotel = Auth::user()->hotel;
+			if(!$hotel)
+			{
+				$roomtype = [];
+				$roomcal = [];
+				return view('roomcalender.index',compact('roomtype','roomcal'));
+			}
 			$roomtype = RoomType::where('hotel_id','=',$hotel->id)->lists('name' , 'id');
 
 			$roomcal = RoomCalendar::all();

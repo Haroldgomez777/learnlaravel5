@@ -49,6 +49,8 @@ class ManagerController extends Controller
     {
         $new = Auth::user()->hotel()->firstOrNew(['user_id'=>Auth::user()->id ]);
         $new->name = $request->name;
+        $new->location = $request->location;
+        $new->description=$request->description;
         $file = $request->file('img');
 
         if($file != ""){

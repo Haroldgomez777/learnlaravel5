@@ -10,6 +10,9 @@
                 <div class="panel-body">
                     @foreach($hotels as $hotel)
                             <a href="{{ url('/reserve',$hotel->id) }}"><h2>{{$hotel->name}}</h2></a>
+                            <div class ="col-md-7  col-md-offset-2">
+                            <img src="{{url($hotel->file)}}" class="img-rounded" alt="No Image Found" width=100% height="300">
+                            </div>
                     @endforeach                      
                 </div>
             </div>

@@ -2,6 +2,14 @@
 			{!! Form::label('name', 'Hotel Name:') !!}
 			{!! Form::text('name', null, ['class' => 'form-control']) !!}
 		</div>
+		<div class="form-group">
+			{!! Form::label('location', 'Location:') !!}
+			{!! Form::text('location', null, ['class' => 'form-control']) !!}
+		</div>
+		<div class="form-group">
+			{!! Form::label('description', 'Description:') !!}
+			{!! Form::text('description', null, ['class' => 'form-control']) !!}
+		</div>
 		         <div class="control-group">
           			<div class="controls">
 		    {!! Form::label('img','Choose Image:') !!}
