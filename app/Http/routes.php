@@ -20,6 +20,7 @@ Route::get('admin/users', 'AdminController@users');
 Route::get('admin/hotels', 'AdminController@hotels');
 Route::patch('admin/{id}', 'AdminController@makemanager');
 Route::patch('admin/user/{id}', 'AdminController@makeuser');
+Route::delete('admin/user/{id}', 'AdminController@deleteuser');
 Route::delete('admin/hotel/{id}', 'AdminController@deleteHotel');
 
 Route::get('manager/index', 'ManagerController@index');
@@ -37,6 +38,7 @@ Route::get('roomcal/show','RoomCalenderController@show');
 
 Route::get('reserve/list','ReservationController@show');
 Route::post('reserve/create','ReservationController@store');
+Route::get('reserve/viewmine','ReservationController@lister');
 Route::get('reserve/{hotel}','ReservationController@create');
 
 

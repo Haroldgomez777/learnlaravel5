@@ -32,7 +32,20 @@ class ReservationController extends Controller
 					->where('room_calendars.availability','>',0)
 					->lists('name','id');
 			
-			return view('reservations.create' , compact('roomtype'));	
+			$ROOMS = \DB::table('room_types')
+					->where('room_types.hotel_id' ,'=' , $hotel)
+					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
+					->select('room_types.*')
+					->where('room_calendars.availability','>',0)
+					->lists('name','base_price');
+			$PRICES= \DB::table('room_types')
+					->where('room_types.hotel_id' ,'=' , $hotel)
+					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
+					->select('room_types.*')
+					->where('room_calendars.availability','>',0)
+					->lists('base_price','name');
+
+			return view('reservations.create' , compact('roomtype','ROOMS','PRICES'));	
 		}
 
 		public function store(CreateReservationRequest $request)
@@ -122,7 +135,7 @@ class ReservationController extends Controller
 
 		        session()->flash('flash_message','OK your room is booked');
 		        
-		        return redirect('/home');
+		        return redirect('reserve/viewmine');
 		    }
 		}
 
@@ -146,23 +159,11 @@ class ReservationController extends Controller
 			return view('reservations.show', compact('reserved'));
 		}
 
-		public function lists()
+		public function lister()
 		{
-			$hotel = Auth::user()->hotel;
-			if(!$hotel)
-			{
-				$roomtypes = [];
-				
-				return view('reservations.list', compact('roomtypes'));
-			}
-			$roomtypes = \DB::table('room_types')
-					->where('room_types.hotel_id' ,'=' , $hotel->id)
-					->join('room_calendars','room_types.id','=','room_calendars.room_type_id')
-					->select('room_types.*')
-					->where('room_calendars.availability','>',0)
-					->lists('name','id');
+			$reservation = Reservation::all()->last();
 
-			return view('reservations.list', compact('roomtypes'));
+			return view('reservations.list', compact('reservation'));
 		}
 
 

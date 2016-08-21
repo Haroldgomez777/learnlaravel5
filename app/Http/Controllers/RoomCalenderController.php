@@ -48,7 +48,7 @@ class RoomCalenderController extends Controller
 		{
 			
 			$this->setPriceInRangeForRoomType($request);
-			session()->flash('flash_message','Room Type created');
+			session()->flash('flash_message','Room calendar created');
 			return redirect('roomcal');
 			
 		}

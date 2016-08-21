@@ -1,10 +1,9 @@
 @extends('admin.app')
 @section('content')
-<div class="jumbotron">
 			<div class="container">
 			      <h1>Hotels</h1>
 			      </hr>     
-			  <table class="table table-bordered">
+			  <table class="table table-bordered table-hover">
 			    <thead>
 			      <tr>
 			        <th>ID</th>
@@ -39,5 +38,5 @@
 			    </tbody>
 		  </table>
 	</div>
-</div>
+
 @endsection

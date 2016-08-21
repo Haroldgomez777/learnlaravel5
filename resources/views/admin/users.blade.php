@@ -1,11 +1,12 @@
 @extends('admin.app')
 @section('content')
 
-<div class="jumbotron">
+
 		<div class="container">
+		<div class="row">
 			      <h2>Users</h2>
 			      </hr>     
-			  <table class="table table-bordered">
+			  <table class="table table-sm table-bordered table-hover ">
 			    <thead>
 			      <tr>
 			        <th>ID</th>
@@ -14,7 +15,8 @@
 			        <th>password </th>
 			        <th>Role</th>
 			        <th>Make Manager</th> 
-			        <th>Make user</th>       
+			        <th>Make user</th>
+			        <th>Delete User</th>       
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -47,6 +49,16 @@
 				                <span class="glyphicon glyphicon-flash"></span> Make user
 				            </button>
 				</form>
+				<td>
+					<form action="{{ url('admin/user/'.$user->id) }}" method="post">
+				            {{ csrf_field() }}
+				            {{ method_field('DELETE') }}
+
+				            <button type="submit" class=" btn btn-danger btn-xs">
+				                <span class="glyphicon glyphicon-trash"></span> DELETE
+				            </button>
+				</form>
+				</td>
 				@endif
 			      	</td>
 
@@ -54,6 +66,7 @@
 			     @endforeach
 			    </tbody>
 		  </table>
-</div>
-</div>
+		 </div>
+	</div>
+
 @endsection

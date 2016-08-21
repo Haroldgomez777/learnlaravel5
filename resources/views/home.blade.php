@@ -24,7 +24,8 @@
                         </div>
                     <div class="panel-body">
                        <h3>Location:{!! $hotel->location !!}</h3>
-                        <article> Description:{!! nl2br(e($hotel->description)) !!}</article>
+                        <article> Description:{!! nl2br(e($hotel->description)) !!}
+                        </article>
                     </div>
         
         </article>
