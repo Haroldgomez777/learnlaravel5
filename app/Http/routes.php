@@ -18,10 +18,13 @@ Route::get('/', function() {
 Route::get('admin/index', 'AdminController@index');
 Route::get('admin/users', 'AdminController@users');
 Route::get('admin/hotels', 'AdminController@hotels');
+Route::get('admin/tag', 'AdminController@addTag');
+Route::post('admin/tag', 'AdminController@adTag');
 Route::patch('admin/{id}', 'AdminController@makemanager');
 Route::patch('admin/user/{id}', 'AdminController@makeuser');
 Route::delete('admin/user/{id}', 'AdminController@deleteuser');
 Route::delete('admin/hotel/{id}', 'AdminController@deleteHotel');
+Route::delete('admin/tag/{id}', 'AdminController@deleteTag');
 
 Route::get('manager/index', 'ManagerController@index');
 Route::get('manager/create', 'ManagerController@create');
@@ -57,9 +60,7 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
 
 
 Route::get('/hotel', 'HotelController@index');

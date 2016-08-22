@@ -158,7 +158,7 @@
                     <a href="{{url('/admin/hotels')}}">Hotels List</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="{{url('/admin/tag')}}">Add Tags</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -175,6 +175,7 @@
 
 <div class="jumbotron" id="dark">
     @yield('content')
+    @include('partials.form-status')
 </div>
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>

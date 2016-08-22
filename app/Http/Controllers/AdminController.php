@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\createtag;
 use App\User;
 use App\Hotel;
+use App\Tag;
 
 class AdminController extends Controller
 {
@@ -70,5 +72,30 @@ class AdminController extends Controller
 
     }
 
+    public function addTag()
+    {
+
+        $tags = Tag::all();
+
+        return view('admin.tag', compact('tags'));
+
+    }
+
+    public function adTag(createtag $request)
+    {
+
+        $tag = Tag::create($request->all());
+
+        session()->flash('flash_message', 'Tag is created');
+
+        return redirect('admin/tag');
+    }
+
+    public function deleteTag($id)
+    {
+        $tag = Tag::find($id);
+        $tag->delete();
+        return redirect('admin/tag');
+    }
 
 }
