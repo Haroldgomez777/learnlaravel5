@@ -34,6 +34,8 @@ class ManagerController extends Controller
             $hotel = new Hotel;
             $hotel->name = 'Add your Hotel';
             $hotel->file = '/uploads/11.jpg';
+            $hotel->location = 'your location';
+            $hotel->description = 'A short description about hotel';
             $hotel->user_id=Auth::user()->id; 
             $hotel->save();
             return view('manager.home',compact('hotel'));
