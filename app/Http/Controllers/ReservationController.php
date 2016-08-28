@@ -52,6 +52,7 @@ class ReservationController extends Controller
 		{
 				$room_info  = $request['room_info'];
 				$room = RoomType::find($room_info);
+				$hotel =  $room->hotel_id;
 
 		        $start_dt =$request['start_dt'];
 		        $end_dt= $request['end_dt'];
@@ -63,7 +64,7 @@ class ReservationController extends Controller
 		        {
 		        	session()->flash('flash_message','No rooms available');
 
-		        	return redirect('/home');
+		        	return redirect()->route('reservation', [$hotel]);
 		        }
 		        
 
@@ -72,7 +73,7 @@ class ReservationController extends Controller
 		         if($checkifexistsfirst==null||$e==null)
 		         {
 		         	session()->flash('flash_message','No rooms available');
-		         	 return redirect('reserve');
+		         	 return redirect()->route('reservation', [$hotel]);
 		         }
 		         else{
 		        $count = RoomCalendar::where('day','>=',$start_dt)
@@ -130,7 +131,7 @@ class ReservationController extends Controller
 		        else
 		        {
 		        	session()->flash('flash_message','No rooms available');
-		        	return redirect('reserve');
+		        	return redirect()->route('reservation', [$hotel]);
 		        }
 
 		        session()->flash('flash_message','OK your room is booked');

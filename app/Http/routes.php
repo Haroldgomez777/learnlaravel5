@@ -42,7 +42,7 @@ Route::get('roomcal/show','RoomCalenderController@show');
 Route::get('reserve/list','ReservationController@show');
 Route::post('reserve/create','ReservationController@store');
 Route::get('reserve/viewmine','ReservationController@lister');
-Route::get('reserve/{hotel}','ReservationController@create');
+Route::get('reserve/{hotel}','ReservationController@create')->name('reservation');
 
 
 
