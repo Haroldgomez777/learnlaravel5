@@ -1,5 +1,5 @@
 @if(Session::has('flash_message'))
-        <div class="alert alert-success">{{session('flash_message')}}</div>
+        <div class="alert alert-success"><h3>{{session('flash_message')}}</h3></div>
 @endif
 @if (session('status'))
 	<div class="alert alert-success alert-dismissable flat">
