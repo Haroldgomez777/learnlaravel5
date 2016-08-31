@@ -18,6 +18,7 @@ class CreateTableCustomers extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->integer('room_type_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

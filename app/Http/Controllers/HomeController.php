@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Hotel;
 use App\Http\Requests;
+use App\Restaurant;
 use Auth;
 use Illuminate\Http\Request;
-use App\Hotel;
 
 
 class HomeController extends Controller
@@ -45,4 +46,32 @@ class HomeController extends Controller
             return view('home',compact('hotels'));
         }
     }
+
+    public function show()
+    {
+        $foods = Restaurant::all();
+        $user = Auth::user();
+        return view('restaurent.show', compact('foods' , 'user' ));
+
+    }
+
+    public function order(Request $request)
+    {    
+
+        $this->validate($request, [
+        'select' => 'required'       
+        ]);
+
+        $food = $request->input('select');
+
+        $user = Auth::user();
+
+        $user->restaurant()->sync($food);
+
+        session()->flash('flash_message', 'your order has been placed successfully');
+        
+        return redirect('rose/food');
+    }
+
+     
 }

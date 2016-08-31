@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Small Business - Start Bootstrap Template</title>
+    <title>Hotel manager</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="cdss/bootstrap.min.css" rel="stylesheet">

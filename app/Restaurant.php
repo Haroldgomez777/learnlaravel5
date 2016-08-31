@@ -13,4 +13,9 @@ class Restaurant extends Model
     {
         return $this->hasOne('App\Hotel');
     }
+
+    public function User()
+    {
+    	return $this->belongsToMany('App\User');
+    }
 }

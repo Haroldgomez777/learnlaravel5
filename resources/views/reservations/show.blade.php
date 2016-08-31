@@ -1,11 +1,9 @@
 @extends('manager.app')
 @section('content')
-
-<div class="panel-heading"><h1>Reservations</h1></div>
-<hr/>
-		<div class="jumbotron">
-			<div class="container">
-			  <h2>Reservations</h2>           
+<div class="container">
+<div class ="row">
+<div class="panel-heading"><h3>Reservations</h3></div>
+   
 			  <table class="table table-bordered">
 			    <thead>
 			      <tr>
@@ -31,6 +29,7 @@
 			     @endforeach
 			    </tbody>
 			  </table>
+			</div>
 			</div>
 	</div>
 

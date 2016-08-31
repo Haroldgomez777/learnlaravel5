@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Requests\RestaurantRequest;
 use App\Restaurant;
+use App\User;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -31,14 +32,10 @@ class RestaurantController extends Controller
     } 
 
     
-
-    public function show()
+     public function serve()
     {
+            $user=User::all();
 
-    }
-
-     public function update()
-    {
-    	
+    	return view('restaurent/serve',compact('user'));
     }
 }

@@ -88,6 +88,7 @@ class ReservationController extends Controller
 			        $customer->last_name=$request['lastname'];
 			        $customer->email=$request['email'];
 			        $customer->room_type_id = $room->id;
+			        $customer->user_id = Auth::user()->id;
 			        $customer->save();
 
 			        $reservation  = new Reservation;

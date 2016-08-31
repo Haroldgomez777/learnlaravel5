@@ -87,6 +87,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/articles') }}">Articles</a></li>
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/rose/food') }}">Avilable food items</a></li>
+                </ul>
                 @elseif(Auth::user()->role->id=='3')
 
                 <ul class="nav navbar-nav">
@@ -104,6 +107,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/roomcal/show') }}">Avilable Rooms</a></li>
                 </ul>
+
                 
                 
                 @endif

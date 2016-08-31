@@ -23,19 +23,19 @@
 
         #dark{
 
-            background-color:  #ddeeeb
+            background-color:  #B0B0B0;
         }
         .fa-btn {
             margin-right: 6px;
         }
         #app-layout{
-                background-color:  #ddeeeb;
+                background-color:  #B0B0B0;
         }
        .panel-body{
-            background-color:  #ddeeeb;
+            background-color:  #B0B0B0;
         }
         #pac{
-            background-color:  #ddeeeb;
+            background-color:  #B0B0B0;
         }
     </style>
 </head>
@@ -153,7 +153,7 @@
                     <a href="{{ url('/rose/list') }}">Restaurent</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="{{ url('/rose/serve') }}">Orders</a>
                 </li>
             </ul>
         </div>

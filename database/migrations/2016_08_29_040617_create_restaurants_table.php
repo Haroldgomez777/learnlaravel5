@@ -19,6 +19,13 @@ class CreateRestaurantsTable extends Migration
             $table->integer('hotel_id')->default(2);
             $table->timestamps();
         });
+
+        Schema::create('restaurant_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('restaurant_id')->unsigned();
+            $table->timestamps();
+       });
     }
 
     /**
@@ -28,6 +35,8 @@ class CreateRestaurantsTable extends Migration
      */
     public function down()
     {
+       Schema::drop('restaurant_user');
         Schema::drop('restaurants');
+
     }
 }

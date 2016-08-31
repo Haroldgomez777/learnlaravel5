@@ -40,4 +40,11 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Hotel');
     }
+
+    public function restaurant()
+    {
+        return $this->belongsToMany('App\Restaurant');
+    }
+
+    
 }
