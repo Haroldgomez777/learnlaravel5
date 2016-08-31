@@ -44,6 +44,8 @@ Route::post('reserve/create','ReservationController@store');
 Route::get('reserve/viewmine','ReservationController@lister');
 Route::get('reserve/{hotel}','ReservationController@create')->name('reservation');
 
+Route::get('rose/list','RestaurantController@index');
+Route::post('rose/create','RestaurantController@create');
 
 
 Route::resource('articles','ArticlesController');

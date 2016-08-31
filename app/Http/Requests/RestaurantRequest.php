@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateReservationRequest extends Request
+class RestaurantRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,9 @@ class CreateReservationRequest extends Request
     public function rules()
     {
         return [
-            'room_info'=> 'required',
-            'customer'=>'required|alpha',
-            'lastname'=> 'required|alpha',
-            'email'=> 'required',
-            'occupancy'=> 'required',
-            'start_dt'=> 'required|date|after:yesterday',
-            'end_dt'=> 'required|date|before:20-12-2016|after:yesterday'
+           
+            'food_name'=>'required|alpha_num',
+            'price'=>'required|integer'
 
         ];
     }

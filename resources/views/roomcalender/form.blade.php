@@ -23,5 +23,7 @@
 
 		<!--Add Article Form Input -->
 		<div class="form-group">
+			<div class="col-md-4 col-md-offset-4">
 			{!! Form::submit($submitButtonText,['class'=>'btn btn-primary form-control'])!!}
+			</div>
 		</div>
