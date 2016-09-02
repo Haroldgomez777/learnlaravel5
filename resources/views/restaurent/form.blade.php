@@ -1,5 +1,4 @@
 
-
 		<div class="form-group row">
 			{!! Form::label('food_name', 'Name:', ['class' => 'col-sm-3 control-label'])!!}
 			<div class="col-sm-8">

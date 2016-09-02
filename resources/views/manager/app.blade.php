@@ -155,6 +155,9 @@
                 <li>
                     <a href="{{ url('/rose/serve') }}">Orders</a>
                 </li>
+                <li>
+                    <a href="{{ url('/staff/list') }}">Staff</a>
+                </li>
             </ul>
         </div>
 
