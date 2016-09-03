@@ -39,6 +39,7 @@ Route::get('rose/serve','RestaurantController@serve');
 Route::post('rose/create','RestaurantController@create');
 Route::get('rose/food','HomeController@show');
 Route::post('rose/order','HomeController@order');
+Route::get('rose/{hotel}','HomeController@create');
 
 
 Route::get('staff/list','StaffController@index');

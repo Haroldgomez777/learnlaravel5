@@ -49,10 +49,8 @@ class HomeController extends Controller
 
     public function show()
     {
-        $foods = Restaurant::all();
-        $user = Auth::user();
-        return view('restaurent.show', compact('foods' , 'user' ));
-
+        $hotels = Hotel::all();
+        return view('restaurent.home',compact('hotels'));
     }
 
     public function order(Request $request)
@@ -71,6 +69,13 @@ class HomeController extends Controller
         session()->flash('flash_message', 'your order has been placed successfully');
         
         return redirect('rose/food');
+    }
+
+    public function create($hotel)
+    {
+        $foods = Restaurant::where('hotel_id','=',$hotel)->get();
+        $user = Auth::user();
+        return view('restaurent.show', compact('foods' , 'user' ));
     }
 
      

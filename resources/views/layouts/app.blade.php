@@ -82,13 +82,13 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/articles/create') }}">Write An Article</a></li>
+                    <li><a href="{{ url('/articles/create') }}">Write A Review</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/articles') }}">Articles</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/rose/food') }}">Avilable food items</a></li>
+                    <li><a href="{{ url('/rose/food') }}">Order food </a></li>
                 </ul>
                 @elseif(Auth::user()->role->id=='3')
 
